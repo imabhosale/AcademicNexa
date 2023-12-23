@@ -1,0 +1,14 @@
+
+  .sidebar-main {
+    display: flex; /* Set the main container to use flexbox */
+   
+  }
+  
+  .side-sidebar {
+    flex: 1; /* Let the sidebar take up available space */
+    
+  }
+  
+  .sidebar-cards {
+  overflow-x: auto;
+  }
