@@ -18,6 +18,7 @@ export default function Student() {
   };
 
   return (
+
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <form className="login-form p-4 rounded border" onSubmit={handleLogin}>
         <h2 className="text-center mb-4">Student Login</h2>
@@ -92,9 +93,11 @@ export default function Student() {
           </div>
         </div>
 
+                  {/* <link to="studentdashboard"> */}
         <button className="btn btn-primary btn-block mb-4" type="submit">
           Sign in
         </button>
+        {/* </link> */}
 
         <div className="text-center">
           <p>

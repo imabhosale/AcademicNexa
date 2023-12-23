@@ -7,7 +7,7 @@ import Sidebar from './DashboardComponents/Sidebar';
 import StudentProfile from './StudentProfile';
 
 
-function StudentDashboard() {
+function StudentProfile1() {
   return (
     <>
     <div>
@@ -21,8 +21,7 @@ function StudentDashboard() {
       </div>
       <div className="sidebar-cards">
 
-    <StudentDashboardCards/>
-    {/* <StudentProfile/> */}
+    <StudentProfile/>
       </div>
 
     </main>
@@ -32,4 +31,4 @@ function StudentDashboard() {
   );
 }
 
-export default StudentDashboard;
+export default StudentProfile1;

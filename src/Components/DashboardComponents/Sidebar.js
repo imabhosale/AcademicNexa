@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Sidebar.css";
+import StudentProfile from '../StudentProfile';
 
 
 export default function Sidebar() {

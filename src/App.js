@@ -10,6 +10,8 @@ import StudentDashboard from './Components/StudentDashboard';
 import Footer from './Components/Footer';
 import HeroSection from './Components/HeroSection';
 import StudentRegistration from './Components/StudentRegistration';
+import StudentProfile from './Components/StudentProfile';
+import StudentProfile1 from './Components/StudentProfile1';
 
 
 
@@ -44,6 +46,9 @@ function App() {
   <Route exact path='/studentdashboard' element={<StudentDashboard/>}></Route>
   <Route exact path='/home' element={<HeroSection/>}></Route>
   <Route exact path='/studentregister' element={<StudentRegistration/>}></Route>
+  <Route exact path='/studentprofile' element={<StudentProfile/>}></Route>
+  <Route exact path='/studentprofile1' element={<StudentProfile1/>}></Route>
+
    {/* <Route exact path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} handleLogin={handleLogin} />}></Route>
   <Route exact path='/load' element={<LoadingAnimation/>}></Route> */}
 
