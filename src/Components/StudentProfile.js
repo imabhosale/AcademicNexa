@@ -2,10 +2,11 @@
 import React from 'react';
 import './StudentProfile.css'; // Import a CSS file for styling if needed
 import studentPhoto from './studentPhoto.jpg'; // Replace with the actual photo URL
-import Sidebar from './DashboardComponents/Sidebar';
+
 const StudentProfile = () => {
   const studentInfo = {
     firstName: 'Abhishek',
+    middleName:'Sanjay',
     lastName: 'Bhosale',
     email: 'abhi@example.com',
     marks: '90%',
