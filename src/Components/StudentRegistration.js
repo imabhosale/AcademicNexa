@@ -32,7 +32,10 @@ const StudentRegistration = () => {
       const response = await axiosInstance
       .post(`${BASE_URL}/Api/student/register`, formData);
 
-
+      setTimeout(() => {
+        // Redirect to the next page (replace '/dashboard' with your actual route)
+        window.location.href = '/studentlogin';
+      }, 20);
 
       // Handle success (you may want to redirect or show a success message)
       console.log('Registration successful:', response);

@@ -345,3 +345,76 @@
     border-radius: 99px;
     background-color: #D62929;
   }
+
+
+  
+label[for=nav-toggle] {
+  position: absolute;
+  right: 0;
+  width: 3rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#nav-toggle-burger {
+  /* ... existing styles ... */
+}
+
+#nav-toggle-burger:before,
+#nav-toggle-burger:after {
+  /* ... existing styles ... */
+}
+
+/* New styles for dropdown */
+label[for=nav-toggle]::after {
+  content: '\25BE'; /* Unicode character for down arrow */
+  font-size: 1.5rem;
+  margin-left: 4px;
+}
+
+#nav-header #nav-toggle-burger,
+#nav-header label[for=nav-toggle]::after {
+  color: var(--navbar-light-primary);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--navbar-dark-primary);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  padding: 8px;
+  z-index: 3;
+}
+
+label[for=nav-toggle]:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  color: var(--navbar-light-secondary);
+  text-decoration: none;
+  padding: 8px;
+  transition: background 0.2s;
+}
+
+.dropdown a:hover {
+  background: var(--navbar-dark-secondary);
+}
+
+/* ... other styles ... */
+
+/* New styles for hovered item */
+.nav-button:hover {
+  color: #3498db; /* Change to your desired blue color */
+}
+
+.nav-button:hover ~ #nav-content-highlight {
+  top: 16px;
+}

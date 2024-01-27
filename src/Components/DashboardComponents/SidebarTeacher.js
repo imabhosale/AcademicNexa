@@ -37,7 +37,7 @@ const Sidebar = () => {
       <Collapse isOpen={showSidebar} className="d-lg-block bg-f2f2f2 sidebar" style={{ width: '250px' }}>
         <div className="position-sticky">
           <ListGroup flush className="mx-3 mt-4">
-            <h5 className="mb-4 text-center"  active aria-current='true'>Student Sidebar</h5>
+            <h5 className="mb-4 text-center"  active aria-current='true'>Teacher Sidebar</h5>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded rounded'>
               Main Dashboard

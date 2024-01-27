@@ -33,7 +33,7 @@ export default function Student() {
       setTimeout(() => {
         // Redirect to the next page (replace '/dashboard' with your actual route)
         window.location.href = '/studentdashboard';
-      }, 2000);
+      }, 20);
 
     } catch (error) {
       console.error('Login failed:', error);

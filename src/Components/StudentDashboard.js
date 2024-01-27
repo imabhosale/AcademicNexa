@@ -4,7 +4,7 @@ import './StudentDashboard.css';
 import { Route, Routes } from 'react-router-dom';
 import StudentDashboardCards from './DashboardComponents/StudentDashboardCards';
 import Sidebar from './DashboardComponents/Sidebar';
-import StudentProfile from './StudentProfile';
+import StudentProfile from './StudentProfile'
 
 function StudentDashboard() {
   return (
@@ -23,7 +23,7 @@ function StudentDashboard() {
                       
             <Routes>
              
-              <Route path="/studentrofile" element={<StudentProfile />} />
+              <Route path="/studentrofile" element={<StudentProfile/>} />
             </Routes>
           </div>
         </main>
