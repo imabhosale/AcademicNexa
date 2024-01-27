@@ -32,6 +32,7 @@ const AddQuestion = () => {
       const response = await axiosInstance1.post(`${BASE_URL_QUES}/question/add`, formData);
       console.log('Response from backend:', response.data);
       setSuccessMsg('Question is added successfully!');
+      window.location.href = '/teacher';
     } catch (error) {
       console.error('Error adding question:', error);
     }
@@ -46,7 +47,7 @@ const AddQuestion = () => {
               <h2 className="text-center mb-4">Add Question</h2>
 
               <Row>
-                <Col md={6}>
+                <Col md={5}>
                   {/* Question Title */}
                   <FormGroup>
                     <Label for="questionTitle">Question Title:</Label>
@@ -76,22 +77,7 @@ const AddQuestion = () => {
                   ))}
 
                   {/* Difficulty Level */}
-                  <FormGroup>
-                    <Label for="difficultyLevel">Difficulty Level:</Label>
-                    <Input
-                      type="select"
-                      id="difficultyLevel"
-                      name="difficultyLevel"
-                      value={formData.difficultyLevel}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="">Select Difficulty</option>
-                      <option value="Hard">Hard</option>
-                      <option value="Medium">Medium</option>
-                      <option value="Easy">Easy</option>
-                    </Input>
-                  </FormGroup>
+                 
                 </Col>
                 <Col md={6}>
                   {/* Right Answer */}
@@ -123,6 +109,22 @@ const AddQuestion = () => {
                       onChange={handleChange}
                       required
                     />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="difficultyLevel">Difficulty Level:</Label>
+                    <Input
+                      type="select"
+                      id="difficultyLevel"
+                      name="difficultyLevel"
+                      value={formData.difficultyLevel}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select Difficulty</option>
+                      <option value="Hard">Hard</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Easy">Easy</option>
+                    </Input>
                   </FormGroup>
 
                   {/* Submit Button */}

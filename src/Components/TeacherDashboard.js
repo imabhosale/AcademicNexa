@@ -19,7 +19,7 @@ function TeacherDashboard() {
           </div>
 
           <div className="sidebar-cards">
-           <StudentDashboardCards/>
+           {/* <StudentDashboardCards/> */}
            <Routes>
            <Route path="/AllQuestion" element={<QuestionList/>} />
              <Route path="/addquestion" element={<AddQuestion/>} />

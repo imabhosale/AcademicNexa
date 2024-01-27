@@ -14,6 +14,7 @@ import {
   DropdownItem
 } from 'reactstrap';
 import './Sidebar.css';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -22,6 +23,15 @@ const Sidebar = () => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
+  useEffect(() => {
+    // Cleanup: Remove the event listener when the component unmounts
+    return () => {
+      const label = document.querySelector('label[for=nav-toggle]');
+      if (label) {
+        label.removeEventListener('click', toggleSidebar);
+      }
+    };
+  }, []); 
   useEffect(() => {
     // Cleanup: Remove the event listener when the component unmounts
     return () => {
@@ -48,7 +58,7 @@ const Sidebar = () => {
             </ListGroupItem>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Add Quiz
+             <Link to="add">Add Quiz</Link> 
             </ListGroupItem>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
@@ -86,14 +96,21 @@ const Sidebar = () => {
 
           <Nav className="mt-3">
             <NavItem className='me-3 me-lg-0'>
+              {/* Dropdown for Profile */}
               <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
                 <DropdownToggle tag="a" className="nav-link hidden-arrow">
-                  Profile
+                  <img
+                    src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                    className="rounded-circle"
+                    height="22"
+                    alt=""
+                    loading="lazy"
+                  />
                 </DropdownToggle>
 
                 <DropdownMenu>
                   <DropdownItem>
-                    <DropdownItem href="#">My profile</DropdownItem>
+                    <DropdownItem href="#">My Profile</DropdownItem>
                   </DropdownItem>
                   <DropdownItem>
                     <DropdownItem href="#">Settings</DropdownItem>
@@ -103,6 +120,13 @@ const Sidebar = () => {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+            </NavItem>
+
+            <NavItem className='me-3 me-lg-0'>
+              {/* Notification Icon */}
+              <span>
+                <i className="bi bi-bell"></i>
+              </span>
             </NavItem>
           </Nav>
         </div>

@@ -10,7 +10,6 @@ function StudentDashboard() {
   return (
     <>
       <div className="student-dashboard">
-        {/* <Navbar /> */}
 
         <main className='sidebar-main'>
           <div className="side-sidebar">
@@ -24,6 +23,7 @@ function StudentDashboard() {
             <Routes>
              
               <Route path="/studentprofile" element={<StudentProfile/>} />
+              
             </Routes>
           </div>
         </main>

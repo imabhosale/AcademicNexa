@@ -50,8 +50,7 @@ function App() {
 <Route exact path='/home' element={<HeroSection/>}></Route>
 <Route exact path='/studentregister' element={<StudentRegistration/>}></Route>
 
-{/* <Route exact path='/addquestion' element={<AddQuestion/>}></Route>
-<Route exact path='/allquestion' element={<AllQuestion/>}></Route> */}
+
  {/* <Route exact path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} handleLogin={handleLogin} />}></Route>
 <Route exact path='/load' element={<LoadingAnimation/>}></Route> */}
 
