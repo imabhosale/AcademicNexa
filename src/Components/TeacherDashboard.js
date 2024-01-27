@@ -1,12 +1,13 @@
 import React from 'react';
 import SidebarTeacher from './DashboardComponents/SidebarTeacher';
 import { Route, Routes } from 'react-router-dom';
-// import Sidebar from './Question/AllQuestion';
 import AddQuestion from './Question/AddQuestion';
-
+import StudentDashboardCards from './DashboardComponents/StudentDashboardCards';
+import './StudentDashboard.css';
+import QuestionList from './Question/AllQuestion';
 function TeacherDashboard() {
   return (
-    <div>
+  
       <>
       <div className="student-dashboard">
         {/* <Navbar /> */}
@@ -18,17 +19,16 @@ function TeacherDashboard() {
           </div>
 
           <div className="sidebar-cards">
-           
-                      
-            <Routes>
-            <Route exact path='/addquestion' element={<AddQuestion/>}></Route>
-            
-            </Routes>
+           <StudentDashboardCards/>
+           <Routes>
+           <Route path="/AllQuestion" element={<QuestionList/>} />
+             <Route path="/addquestion" element={<AddQuestion/>} />
+           </Routes>
           </div>
         </main>
       </div>
     </>
-    </div>
+    
   );
 }
 

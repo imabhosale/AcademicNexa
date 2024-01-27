@@ -44,14 +44,14 @@ function App() {
 <Route path="/dashboard/*" element={<Dashboard  user={user}/>}></Route>
 <Route path="/admindashboard/*" element={<AdminDashboard  admin={admin}/>}></Route> */}
 <Route exact path='/login' element={<Login/>}></Route>
-<Route exact path='/teacher' element={<TeacherDashboard/>}></Route>
+<Route  exact path='/teacher/*' element={<TeacherDashboard/>}></Route>
 <Route exact path='/studentlogin' element={<Studentlogin/>}></Route>
 <Route  path="/studentdashboard/*" element={<StudentDashboard/>}></Route>
 <Route exact path='/home' element={<HeroSection/>}></Route>
 <Route exact path='/studentregister' element={<StudentRegistration/>}></Route>
 
-<Route exact path='/addquestion' element={<AddQuestion/>}></Route>
-<Route exact path='/allquestion' element={<AllQuestion/>}></Route>
+{/* <Route exact path='/addquestion' element={<AddQuestion/>}></Route>
+<Route exact path='/allquestion' element={<AllQuestion/>}></Route> */}
  {/* <Route exact path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} handleLogin={handleLogin} />}></Route>
 <Route exact path='/load' element={<LoadingAnimation/>}></Route> */}
 

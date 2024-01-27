@@ -23,7 +23,7 @@ function StudentDashboard() {
                       
             <Routes>
              
-              <Route path="/studentrofile" element={<StudentProfile/>} />
+              <Route path="/studentprofile" element={<StudentProfile/>} />
             </Routes>
           </div>
         </main>

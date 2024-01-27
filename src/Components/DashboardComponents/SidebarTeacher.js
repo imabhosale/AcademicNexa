@@ -14,6 +14,7 @@ import {
   DropdownItem
 } from 'reactstrap';
 import './Sidebar.css';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -52,12 +53,16 @@ const Sidebar = () => {
             </ListGroupItem>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Analytics
+            <Link to="addquestion">
+              Add Question
+              </Link>
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              SEO
+            <Link to="AllQuestion">
+            <ListGroupItem tag='a'  action className='border-0 border-bottom rounded'>
+              View Question
             </ListGroupItem>
+            </Link>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
               Orders
