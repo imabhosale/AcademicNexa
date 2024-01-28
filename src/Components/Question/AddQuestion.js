@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import axiosInstance1, { BASE_URL_QUES } from '../../Components/API/Url2';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'; 
 
 const AddQuestion = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [formData, setFormData] = useState({
     questionTitle: '',
     option1: '',
@@ -15,7 +19,7 @@ const AddQuestion = () => {
   });
 
   const difficultyOptions = ['Hard', 'Medium', 'Easy'];
-  const [successMsg, setSuccessMsg] = useState('');
+  const [successMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
@@ -27,10 +31,15 @@ const AddQuestion = () => {
     try {
       const response = await axiosInstance1.post(`${BASE_URL_QUES}/question/add`, formData);
       console.log('Response from backend:', response.data);
-      setSuccessMsg('Question added successfully!');
+      //setSuccessMsg('Question added successfully!');
+      toast.success('Question added successfully!');
+
+      // Use navigate to go to the teacher dashboard
+      navigate('/teacher');
     } catch (error) {
       console.error('Error adding question:', error);
       setErrorMsg('Failed to add question. Please try again.');
+      toast.error('Failed to add question. Please try again.');
     }
   };
 
@@ -130,13 +139,19 @@ const AddQuestion = () => {
                 </Col>
               </Row>
 
-              {/* Success and Error Messages */}
-              {successMsg && <p className="text-success mt-3">{successMsg}</p>}
+               {/* Success and Error Messages */}
+               {successMsg && <p className="text-success mt-3">{successMsg}</p>}
               {errorMsg && <p className="text-danger mt-3">{errorMsg}</p>}
+
+              {/* ToastContainer to display toasts */}
+              <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
             </Form>
           </div>
         </Col>
       </Row>
+
+      {/* ToastContainer to display toasts */}
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
     </Container>
   );
 };

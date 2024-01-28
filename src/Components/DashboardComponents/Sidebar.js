@@ -53,9 +53,9 @@ const Sidebar = () => {
             My Profile
             </ListGroupItem>
 
-            <ListGroupItem tag={Link} to="add" action className='border-0 border-bottom rounded'>
+            {/* <ListGroupItem tag={Link} to="add" action className='border-0 border-bottom rounded'>
               Add Quiz
-            </ListGroupItem>
+            </ListGroupItem> */}
 
             <ListGroupItem tag={Link} to="mycourse" action className='border-0 border-bottom rounded'>
               MY Courses
@@ -80,8 +80,9 @@ const Sidebar = () => {
             <ListGroupItem tag={Link} to="getquebycategory" action className='border-0 border-bottom rounded'>
             Get Questions By Category
             </ListGroupItem>
+
             <ListGroupItem tag={Link} to="givequiz" action className='border-0 border-bottom rounded'>
-            Give Quiz
+            Attempt Quiz
             </ListGroupItem>
 
            
@@ -89,9 +90,9 @@ const Sidebar = () => {
 
           
 
-            <ListGroupItem tag='a' href='#' action className='border-0 rounded'>
+            {/* <ListGroupItem tag='a' href='#' action className='border-0 rounded'>
               Sales
-            </ListGroupItem>
+            </ListGroupItem> */}
 
           </ListGroup>
         </div>

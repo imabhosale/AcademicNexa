@@ -47,10 +47,10 @@ export default function ProfilePage() {
           <MDBCol>
             <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
               <MDBBreadcrumbItem>
-              <a href="#">Home</a>
+             Home
               </MDBBreadcrumbItem>
               <MDBBreadcrumbItem>
-                <a href="#">User</a>
+           User
               </MDBBreadcrumbItem>
               <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
             </MDBBreadcrumb>
