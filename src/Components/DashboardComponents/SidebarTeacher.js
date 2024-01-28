@@ -65,7 +65,7 @@ const Sidebar = () => {
             </Link>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Orders
+            <Link to="createquiz"> Create Quiz</Link>
             </ListGroupItem>
 
             <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>

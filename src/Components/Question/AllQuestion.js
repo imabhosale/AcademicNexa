@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
-import axiosInstance1,{ BASE_URL_QUES} from '../../Components/API/Url2'; 
+import { Table, Input } from 'reactstrap';
+import axiosInstance1, { BASE_URL_QUES } from '../../Components/API/Url2';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
@@ -21,18 +21,33 @@ const QuestionList = () => {
     }
   };
 
+  const handleDifficultyChange = (questionId, newDifficultyLevel) => {
+    // Ensure that the new difficulty level is not null or empty
+    if (newDifficultyLevel) {
+      // Update the difficulty level for the specific question
+      setQuestions((prevQuestions) =>
+        prevQuestions.map((question) =>
+          question.id === questionId ? { ...question, difficultylevel: newDifficultyLevel } : question
+        )
+      );
+    } else {
+      console.error('Invalid difficulty level selected.');
+      // You may want to handle this case differently, e.g., show an error message to the user
+    }
+  };
+
   return (
-    <div>
+    <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
       <h2 className="text-center mb-4">All Questions</h2>
       <Table striped>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Question Title</th>
-            <th>Options</th>
-            <th>Right Answer</th>
-            <th>Difficulty Level</th>
-            <th>Category</th>
+            <th style={{ position: 'sticky', top: '0', background: '#fff', zIndex: '1' }}>ID</th>
+            <th style={{ position: 'sticky', top: '0', background: '#fff', zIndex: '1' }}>Question Title</th>
+            <th style={{ position: 'sticky', top: '0', background: '#fff', zIndex: '1' }}>Options</th>
+            <th style={{ position: 'sticky', top: '0', background: '#fff', zIndex: '1' }}>Right Answer</th>
+            <th style={{ position: 'sticky', top: '0', background: '#fff', zIndex: '1' }}>Difficulty Level</th>
+            <th style={{ position: 'sticky', top: '0', background: '#fff', zIndex: '1' }}>Category</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +59,18 @@ const QuestionList = () => {
                 {question.option1}, {question.option2}, {question.option3}, {question.option4}
               </td>
               <td>{question.rightAnswer}</td>
-              <td>{question.difficultylevel}</td>
+              <td>
+                <Input
+                  type="select"
+                  value={question.difficultylevel || ''}
+                  onChange={(e) => handleDifficultyChange(question.id, e.target.value)}
+                >
+                  <option value="">Select Difficulty</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </Input>
+              </td>
               <td>{question.category}</td>
             </tr>
           ))}

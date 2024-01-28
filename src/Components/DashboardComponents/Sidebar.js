@@ -1,148 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Container,
-  Navbar,
-  NavbarToggler,
-  Collapse,
-  Nav,
-  NavItem,
-  ListGroup,
-  ListGroupItem,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
-import './Sidebar.css';
+import React, { useState,useEffect } from 'react';
+import { Collapse, ListGroup, ListGroupItem } from 'reactstrap';
+
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // State to manage the user profile information
+  const [userProfile,setUserProfile] = useState({
+    name: "WWW ABC XYZ",
+    profileImage: "profileicon.png"
+  });
 
-  const toggleSidebar = () => setShowSidebar(!showSidebar);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   useEffect(() => {
-    // Cleanup: Remove the event listener when the component unmounts
-    return () => {
-      const label = document.querySelector('label[for=nav-toggle]');
-      if (label) {
-        label.removeEventListener('click', toggleSidebar);
-      }
-    };
-  }, []); 
-  useEffect(() => {
-    // Cleanup: Remove the event listener when the component unmounts
-    return () => {
-      const label = document.querySelector('label[for=nav-toggle]');
-      if (label) {
-        label.removeEventListener('click', toggleSidebar);
-      }
-    };
-  }, []); 
+    const userDataString = sessionStorage.getItem('StudentData');
+    if (userDataString) {
+      const userData = JSON.parse(userDataString);
+      setUserProfile({
+        name: userData.firstname + " " + userData.lastname,
+        profileImage: "profileicon.png"
+      });
+    }
+  }, []);
 
   return (
     <div>
-      <Collapse isOpen={showSidebar} className="d-lg-block bg-f2f2f2 sidebar" style={{ width: '250px' }}>
+      <Collapse className="d-lg-block bg-f2f2f2 sidebar" style={{ width: '250px' }}>
         <div className="position-sticky">
+          {/* Updated Student Profile Section */}
+          <div className="d-flex align-items-center justify-content-center flex-column mt-4">
+            <div className="d-flex align-items-center">
+              <h6 className="ms-2 me-4">{userProfile.name}</h6>
+
+              {/* Updated: Add a new profile icon */}
+              <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  className="rounded-circle"
+  height="60"
+  alt="Profile Icon"
+  loading="lazy"
+/>
+
+            </div>
+          </div>
+
           <ListGroup flush className="mx-3 mt-4">
-            <h5 className="mb-4 text-center"  active aria-current='true'>Student Sidebar</h5>
+            {/* Your List Items Here */}
+            <ListGroupItem tag={Link} to="" action className='border-0 border-bottom rounded'>
+  Main Dashboard
+</ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded rounded'>
-              Main Dashboard
+            <ListGroupItem tag={Link} to="studentprofile" action className='border-0 border-bottom rounded' >
+            My Profile
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded' >
-              Website traffic
+            <ListGroupItem tag={Link} to="add" action className='border-0 border-bottom rounded'>
+              Add Quiz
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-             <Link to="add">Add Quiz</Link> 
+            <ListGroupItem tag={Link} to="mycourse" action className='border-0 border-bottom rounded'>
+              MY Courses
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Analytics
+            <ListGroupItem tag={Link} to="courseregistration" action className='border-0 border-bottom rounded'>
+             
+             Course Registration
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              SEO
+            <ListGroupItem tag={Link} to="placements" action className='border-0 border-bottom rounded'>
+            Placements
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Orders
+            <ListGroupItem tag={Link} to="internships" action className='border-0 border-bottom rounded'>
+              Internships
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              International
+            {/* <ListGroupItem tag={Link} to="getquebyid" action className='border-0 border-bottom rounded'>
+            Get Questions ID
+            </ListGroupItem> */}
+            <ListGroupItem tag={Link} to="getquebycategory" action className='border-0 border-bottom rounded'>
+            Get Questions By Category
+            </ListGroupItem>
+            <ListGroupItem tag={Link} to="givequiz" action className='border-0 border-bottom rounded'>
+            Give Quiz
             </ListGroupItem>
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Partners
-            </ListGroupItem>
+           
+            
 
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              Calendar
-            </ListGroupItem>
-
-            <ListGroupItem tag='a' href='#' action className='border-0 border-bottom rounded'>
-              User
-            </ListGroupItem>
+          
 
             <ListGroupItem tag='a' href='#' action className='border-0 rounded'>
               Sales
             </ListGroupItem>
+
           </ListGroup>
-
-          <Nav className="mt-3">
-            <NavItem className='me-3 me-lg-0'>
-              {/* Dropdown for Profile */}
-              <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
-                <DropdownToggle tag="a" className="nav-link hidden-arrow">
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
-                    className="rounded-circle"
-                    height="22"
-                    alt=""
-                    loading="lazy"
-                  />
-                </DropdownToggle>
-
-                <DropdownMenu>
-                  <DropdownItem>
-                    <DropdownItem href="#">My Profile</DropdownItem>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <DropdownItem href="#">Settings</DropdownItem>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <DropdownItem href="#">Logout</DropdownItem>
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </NavItem>
-
-            <NavItem className='me-3 me-lg-0'>
-              {/* Notification Icon */}
-              <span>
-                <i className="bi bi-bell"></i>
-              </span>
-            </NavItem>
-          </Nav>
         </div>
       </Collapse>
-
-      <Navbar expand='lg' light>
-        <Container fluid>
-          <NavbarToggler
-            type='button'
-            aria-label='Toggle navigation'
-            onClick={toggleSidebar}
-          >
-            <span className="navbar-toggler-icon"></span>
-          </NavbarToggler>
-        </Container>
-      </Navbar>
     </div>
   );
 }
