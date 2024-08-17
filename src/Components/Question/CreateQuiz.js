@@ -22,27 +22,35 @@ const CreateQuiz = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      // Make a POST request to your backend API
-      const response = await axiosInstance2.post(`${BASE_URL_QUIZ}/quiz/create`, formData);
-      console.log('Response from backend:', response.data);
-  
-      // Assuming your API returns quizId
-      const { quizId } = response.data;
-  
-      // Update state with the received data
-      setQuizId(quizId);
-  
-      // Display success toast message
-      toast.success(`Quiz created successfully! Quiz ID: ${quizId}`);
+        // Make a POST request to your backend API
+        const response = await axiosInstance2.post(`${BASE_URL_QUIZ}/quiz/create`, formData);
+        console.log('Response from backend:', response.data);
+
+        // Extract the quizId from the response string
+        const responseMessage = response.data;
+        const quizIdMatch = responseMessage.match(/Quiz ID: (\d+)/);
+        const quizId = quizIdMatch ? quizIdMatch[1] : null;
+
+        if (quizId) {
+            // Update state with the received quizId
+            setQuizId(quizId);
+
+            // Display success toast message
+            toast.success(`Quiz created successfully! Quiz ID: ${quizId}`);
+        } else {
+            // If quizId is not found, display an error
+            throw new Error('Quiz ID not found in response');
+        }
     } catch (error) {
-      console.error('Error submitting form:', error);
-  
-      // Display error toast message
-      toast.error('Error creating quiz. Please try again.');
+        console.error('Error submitting form:', error);
+
+        // Display error toast message
+        toast.error('Error creating quiz. Please try again.');
     }
-  };
+};
+
 
   return (
     <div className="container mt-5">
